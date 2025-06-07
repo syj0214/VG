@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 그림자: 더 넓고 더 진하게 -->
+    <item android:right="4dp" android:left="4dp" android:top="4dp" android:bottom="4dp">
+        <shape android:shape="oval">
+            <solid android:color="#55000000" /> <!-- 더 진한 반투명 그림자 -->
+        </shape>
+    </item>
+
+    <!-- 버튼 본체 -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#57BD5A" />
+        </shape>
+    </item>
+</layer-list>

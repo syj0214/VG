@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1017761830027",
+    "project_id": "veggiecoach-749e1",
+    "storage_bucket": "veggiecoach-749e1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017761830027:android:560b54ea740f9f36f7308e",
+        "android_client_info": {
+          "package_name": "com.example.veggiecoach"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABDkPp1JxJKXFo7JquRtAosIte_umgtfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

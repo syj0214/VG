@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 앱 기본 테마: Material Components 기반, 다크모드 지원, 액션바 없음 -->
+    <style name="Theme.VeggieCoach" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 여기서 커스텀 색상이나 폰트 추가 가능 -->
+    </style>
+</resources>
