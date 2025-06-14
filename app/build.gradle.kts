@@ -72,5 +72,8 @@ dependencies {
 
     implementation("com.google.guava:guava:31.1-android")
 
+    implementation("com.google.android.material:material:1.9.0") // TabLayout용
+    implementation("androidx.viewpager2:viewpager2:1.1.0")      // ViewPager2용
+
 
 }

@@ -11,8 +11,13 @@ import androidx.fragment.app.Fragment;
 
 public class MyPageFragment extends Fragment {
 
+    // newInstance 정적 메서드
+    public static MyPageFragment newInstance() {
+        return new MyPageFragment();
+    }
+
     public MyPageFragment() {
-        // 기본 생성자 필요
+        // Required empty public constructor
     }
 
     @Nullable
@@ -20,7 +25,6 @@ public class MyPageFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        // fragment_my_page.xml 레이아웃을 인플레이트
         return inflater.inflate(R.layout.fragment_my_page, container, false);
     }
 }
