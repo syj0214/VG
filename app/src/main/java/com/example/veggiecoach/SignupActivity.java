@@ -6,8 +6,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,17 +15,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 public class SignupActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword, etPasswordConfirm;
-    private Button btnSignUp;
-    private TextView tvGoToLogin;
-    private ProgressBar progressBar;
-
+    private Button btnSignUp, btnCheckDuplicate;
     private FirebaseAuth mAuth;
+    private boolean isEmailChecked = false; // 중복확인 여부 저장 변수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +37,14 @@ public class SignupActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etSignUpPassword);
         etPasswordConfirm = findViewById(R.id.etSignUpPasswordConfirm);
         btnSignUp = findViewById(R.id.btnSignUp);
-        tvGoToLogin = findViewById(R.id.tvGoToLogin);
+        btnCheckDuplicate = findViewById(R.id.btnCheckDuplicate);
+
+        btnCheckDuplicate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkEmailDuplicate();
+            }
+        });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,14 +52,34 @@ public class SignupActivity extends AppCompatActivity {
                 registerUser();
             }
         });
+    }
 
-        tvGoToLogin.setOnClickListener(new View.OnClickListener() {
+    private void checkEmailDuplicate() {
+        String email = etEmail.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email)) {
+            etEmail.setError("이메일을 입력해주세요.");
+            return;
+        }
+
+        mAuth.fetchSignInMethodsForEmail(email).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
             @Override
-            public void onClick(View view) {
-                // 로그인 화면으로 이동
-                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                if (task.isSuccessful() && task.getResult() != null) {
+                    boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+
+                    if (isNewUser) {
+                        Toast.makeText(SignupActivity.this, "사용 가능한 이메일입니다.", Toast.LENGTH_SHORT).show();
+                        isEmailChecked = true;
+                    } else {
+                        Toast.makeText(SignupActivity.this, "이미 사용 중인 이메일입니다.", Toast.LENGTH_SHORT).show();
+                        isEmailChecked = false;
+                    }
+                } else {
+                    Toast.makeText(SignupActivity.this, "중복 확인 실패: " +
+                            (task.getException() != null ? task.getException().getMessage() : "알 수 없는 오류"), Toast.LENGTH_SHORT).show();
+                    isEmailChecked = false;
+                }
             }
         });
     }
@@ -67,6 +91,10 @@ public class SignupActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(email)) {
             etEmail.setError("이메일을 입력해주세요.");
+            return;
+        }
+        if (!isEmailChecked) {
+            Toast.makeText(this, "이메일 중복 확인을 해주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(password)) {
@@ -82,9 +110,8 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
 
-
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -101,7 +128,8 @@ public class SignupActivity extends AppCompatActivity {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                 Toast.makeText(SignupActivity.this, "이미 사용 중인 이메일입니다.", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(SignupActivity.this, "회원가입 실패: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignupActivity.this, "회원가입 실패: " +
+                                        (task.getException() != null ? task.getException().getMessage() : "알 수 없는 오류"), Toast.LENGTH_SHORT).show();
                             }
                         }
                     }

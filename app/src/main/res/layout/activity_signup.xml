@@ -2,87 +2,168 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    tools:context=".SignupActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.10" />
 
     <TextView
         android:id="@+id/tvSignUpTitle"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="회원가입"
-        android:textSize="28sp"
-        android:textStyle="bold"
         android:textColor="#000000"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/guideline_top" />
 
-    <EditText
-        android:id="@+id/etSignUpEmail"
+    <TextView
+        android:id="@+id/tvEmailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="아이디"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSignUpTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutEmailRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="이메일 주소"
-        android:inputType="textEmailAddress"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text"
-        app:layout_constraintTop_toBottomOf="@id/tvSignUpTitle"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEmailLabel">
+
+        <EditText
+            android:id="@+id/etSignUpEmail"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:hint="아이디 입력"
+            android:inputType="textEmailAddress"
+            android:padding="8dp"
+            app:layout_constraintEnd_toStartOf="@id/btnCheckDuplicate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#000000"
+            app:layout_constraintEnd_toEndOf="@id/etSignUpEmail"
+            app:layout_constraintStart_toStartOf="@id/etSignUpEmail"
+            app:layout_constraintTop_toBottomOf="@id/etSignUpEmail" />
+
+        <Button
+            android:id="@+id/btnCheckDuplicate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#57BD5A"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="중복 확인"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvPasswordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="비밀번호"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutEmailRow" />
 
     <EditText
         android:id="@+id/etSignUpPassword"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="비밀번호"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:hint="비밀번호 입력"
         android:inputType="textPassword"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text"
-        app:layout_constraintTop_toBottomOf="@id/etSignUpEmail"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPasswordLabel" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="@id/etSignUpPassword"
+        app:layout_constraintStart_toStartOf="@id/etSignUpPassword"
+        app:layout_constraintTop_toBottomOf="@id/etSignUpPassword" />
+
+    <TextView
+        android:id="@+id/tvPasswordConfirmLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="비밀번호 확인"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etSignUpPassword" />
 
     <EditText
         android:id="@+id/etSignUpPasswordConfirm"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@null"
         android:hint="비밀번호 확인"
         android:inputType="textPassword"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text"
-        app:layout_constraintTop_toBottomOf="@id/etSignUpPassword"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPasswordConfirmLabel" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="@id/etSignUpPasswordConfirm"
+        app:layout_constraintStart_toStartOf="@id/etSignUpPasswordConfirm"
+        app:layout_constraintTop_toBottomOf="@id/etSignUpPasswordConfirm" />
 
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:backgroundTint="#57BD5A"
+        android:padding="14dp"
         android:text="회원가입"
-        android:backgroundTint="#3F51B5"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:padding="14dp"
-        app:layout_constraintTop_toBottomOf="@id/etSignUpPasswordConfirm"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
-
-    <TextView
-        android:id="@+id/tvGoToLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이미 계정이 있으신가요? 로그인"
-        android:textColor="#007AFF"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:paddingTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnSignUp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/etSignUpPasswordConfirm" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

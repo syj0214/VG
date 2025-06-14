@@ -4,90 +4,85 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp">
 
-    <!-- 앱 로고 또는 타이틀 -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="0dp"
+    <!-- 상단 가이드라인: 화면 높이의 20% 위치 -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="로그인"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.22" />
 
-    <!-- 이메일 입력란 -->
+    <!-- 로고 이미지: 가이드라인에 붙도록 -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="230dp"
+        android:layout_height="130dp"
+        android:contentDescription="팀 로고"
+        android:scaleType="fitCenter"
+        android:src="@drawable/vg_logo"
+        app:layout_constraintTop_toTopOf="@id/guideline_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <!-- 이메일 입력 -->
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
         android:hint="이메일 주소"
         android:inputType="textEmailAddress"
         android:padding="12dp"
-        android:background="@android:drawable/edit_text"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/imgLogo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 비밀번호 입력란 -->
+    <!-- 비밀번호 입력 -->
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_background"
         android:hint="비밀번호"
         android:inputType="textPassword"
         android:padding="12dp"
-        android:background="@android:drawable/edit_text"
         app:layout_constraintTop_toBottomOf="@id/etEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- 로그인 버튼 -->
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#57BD5A"
+        android:padding="14dp"
         android:text="로그인"
-        android:backgroundTint="#3F51B5"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:padding="14dp"
         app:layout_constraintTop_toBottomOf="@id/etPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- 회원가입 버튼 -->
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="회원가입"
-        android:backgroundTint="#CCCCCC"
-        android:textColor="#333333"
-        android:padding="14dp"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp" />
-
-    <!-- 비회원으로 계속하기 -->
-    <TextView
-        android:id="@+id/tvGuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="비회원으로 계속하기"
-        android:textColor="#007AFF"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:paddingTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnSignUp"
+        android:background="@android:color/transparent"
+        android:text="회원이 아니신가요?"
+        android:textColor="#888888"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:padding="0dp"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
