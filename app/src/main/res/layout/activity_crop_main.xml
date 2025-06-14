@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- 상단 타이틀 -->
     <TextView
         android:id="@+id/tvCropTitle"
         android:layout_width="match_parent"
@@ -50,6 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- 작물 정보 (왼쪽으로 이동) -->
         <Button
             android:id="@+id/btnCropInfo"
             android:layout_width="0dp"
@@ -61,18 +63,19 @@
             android:textColor="#000000"
             android:background="?attr/selectableItemBackground" />
 
+        <!-- 작물 관리 (오른쪽으로 이동) -->
         <Button
-            android:id="@+id/btnInitWork"
+            android:id="@+id/btnCropManage"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="초기 작업"
+            android:text="작물 관리"
             android:textSize="10sp"
-            android:maxLines="1"
             android:textColor="#000000"
             android:background="?attr/selectableItemBackground" />
 
+        <!-- 홈 -->
         <Button
             android:id="@+id/btnHome"
             android:layout_width="0dp"
@@ -84,6 +87,7 @@
             android:textColor="#000000"
             android:background="?attr/selectableItemBackground" />
 
+        <!-- 판매 -->
         <Button
             android:id="@+id/btnSell"
             android:layout_width="0dp"
@@ -95,6 +99,7 @@
             android:textColor="#000000"
             android:background="?attr/selectableItemBackground" />
 
+        <!-- 마이 -->
         <Button
             android:id="@+id/btnMyPage"
             android:layout_width="0dp"

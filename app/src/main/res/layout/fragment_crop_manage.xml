@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <!-- 카메라 미리보기 -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- 촬영 후 보여줄 이미지 -->
+    <ImageView
+        android:id="@+id/imageViewPhoto"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:layout_gravity="center" />
+
+    <!-- 사진 촬영 / 선택 버튼 -->
+    <Button
+        android:id="@+id/btnTakePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사진 촬영 / 선택"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="32dp" />
+
+</FrameLayout>

@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 public class CropMainActivity extends AppCompatActivity {
 
-    private Button btnCropInfo, btnInitWork, btnHome, btnSell, btnMyPage;
+    private Button btnCropManage, btnCropInfo, btnHome, btnSell, btnMyPage;
     private TextView tvCropTitle;
 
     private String cropName = "작물 없음";
@@ -20,8 +20,8 @@ public class CropMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crop_main);
 
-        btnCropInfo = findViewById(R.id.btnCropInfo);
-        btnInitWork = findViewById(R.id.btnInitWork);
+        btnCropInfo = findViewById(R.id.btnCropInfo);         // 작물 정보
+        btnCropManage = findViewById(R.id.btnCropManage);     // 작물 관리
         btnHome = findViewById(R.id.btnHome);
         btnSell = findViewById(R.id.btnSell);
         btnMyPage = findViewById(R.id.btnMyPage);
@@ -44,9 +44,9 @@ public class CropMainActivity extends AppCompatActivity {
             replaceFragment(CropInfoFragment.newInstance(cropName));
         });
 
-        btnInitWork.setOnClickListener(v -> {
-            tvCropTitle.setText("초기 작업");
-            replaceFragment(new InitWorkFragment());
+        btnCropManage.setOnClickListener(v -> {
+            tvCropTitle.setText("작물 관리");
+            replaceFragment(new CropManageFragment());
         });
 
         btnHome.setOnClickListener(v -> {
