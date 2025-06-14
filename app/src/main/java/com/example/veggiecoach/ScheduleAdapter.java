@@ -12,9 +12,9 @@ import java.util.List;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
 
-    private List<CalendarActivity.ScheduleItem> scheduleList;
+    private List<TodoListFragment.ScheduleItem> scheduleList;
 
-    public ScheduleAdapter(List<CalendarActivity.ScheduleItem> scheduleList) {
+    public ScheduleAdapter(List<TodoListFragment.ScheduleItem> scheduleList) {
         this.scheduleList = scheduleList;
     }
 
@@ -28,7 +28,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ScheduleAdapter.ViewHolder holder, int position) {
-        CalendarActivity.ScheduleItem item = scheduleList.get(position);
+        TodoListFragment.ScheduleItem item = scheduleList.get(position);
         holder.tvContent.setText(item.getContent());
     }
 
@@ -45,7 +45,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
         }
     }
 
-    public void updateList(List<CalendarActivity.ScheduleItem> newList) {
+    public void updateList(List<TodoListFragment.ScheduleItem> newList) {
         this.scheduleList = newList;
         notifyDataSetChanged();
     }

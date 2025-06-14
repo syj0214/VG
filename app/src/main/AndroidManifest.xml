@@ -49,7 +49,6 @@
         <activity android:name=".SignupActivity" android:exported="false" />
         <activity android:name=".SelectActivity" android:exported="false" />
         <activity android:name=".CropMainActivity" android:exported="false" />
-        <activity android:name=".CalendarActivity" android:exported="false" />
 
         <!-- PhotoPreviewActivity 꼭 등록 -->
         <activity android:name=".PhotoPreviewActivity" android:exported="false" />
